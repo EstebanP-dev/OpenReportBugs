@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    NavBarHasShadow="True"
+    NavBarIsVisible="True"
+    Title="OpenReportBugs"
+    x:Class="OpenReportBugs.AppShell"
+    x:Name="This"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:local="clr-namespace:OpenReportBugs"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*, *">
+            <Label
+                Grid.Column="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding CurrentPage.Title, Source={x:Reference This}}"
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+            <Label
+                Grid.Column="1"
+                HorizontalTextAlignment="Center"
+                Text="{Binding CurrentPage, Source={x:Reference This}, Converter={StaticResource CurrentPageToPageTitleConverter}}"
+                TextColor="Black"
+                VerticalTextAlignment="Center" />
+        </Grid>
+    </Shell.TitleView>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}"
+        FlyoutItemIsVisible="False"
+        Route="MainPage"
+        Title="Home" />
+
+    <MenuItem Text="Test" />
+
+</Shell>
